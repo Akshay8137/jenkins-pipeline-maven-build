@@ -1,22 +1,22 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Fetching source code..."
+                checkout scm
+            }
+        }
 
-    stage('Checkout') {
-      steps {
-        echo "Fetching source code..."
-        checkout scm
-      }
-    }
-    stage('Build') {
+        stage('Build') {
             steps {
                 echo "Building the application without tests..."
                 bat 'mvn clean install -DskipTests'
             }
         }
 
-    stage('Package') {
+        stage('Package') {
             steps {
                 echo "Packaging application..."
                 sh 'mvn package -DskipTests'
