@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building the application without tests..."
+                echo "Building the application..."
                 bat 'mvn clean install -DskipTests'
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Package') {
             steps {
                 echo "Packaging application..."
-                sh 'mvn package -DskipTests'
+                bat 'mvn package -DskipTests'
             }
             post {
                 success {
