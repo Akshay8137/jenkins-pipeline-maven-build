@@ -12,7 +12,7 @@ pipeline {
     stage('Build') {
             steps {
                 echo "Building the application without tests..."
-                sh 'mvn clean install -DskipTests'
+                bat 'mvn clean install -DskipTests'
             }
         }
 
